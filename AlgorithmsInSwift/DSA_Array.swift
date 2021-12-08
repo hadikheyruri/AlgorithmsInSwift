@@ -486,5 +486,53 @@ class DSA_Array {
                 
         return Array(arr[head...tail])
     }
-
+    
+    
+    func findMedianSortedArrays(_ nums1: [Int], _ nums2: [Int]) -> Double {
+        
+        let size = nums1.count + nums2.count
+        var merged: [Int] = Array(repeating: 0, count: size)
+        
+        var index1: Int = 0
+        var index2: Int = 0
+        var kIndex: Int = 0
+        
+        if size == 0 { return 0 }
+        let mid: Int = size / 2
+        
+        while kIndex < mid + 1 && index1 < nums1.count && index2 < nums2.count {
+            
+            if nums1[index1] <= nums2[index2] {
+                merged[kIndex] = nums1[index1]
+                index1 += 1
+                kIndex += 1
+            } else {
+                merged[kIndex] = nums2[index2]
+                index2 += 1
+                kIndex += 1
+            }
+        }
+        
+        while kIndex < mid + 1 && index1 < nums1.count {
+            merged[kIndex] = nums1[index1]
+            index1 += 1
+            kIndex += 1
+        }
+        
+        while kIndex < mid + 1 && index2 < nums2.count {
+            merged[kIndex] = nums2[index2]
+            index2 += 1
+            kIndex += 1
+        }
+        
+        var median: Double = 0
+        if size % 2 == 0 {
+            median = (Double(merged[mid - 1]) + Double(merged[mid])) / 2.0
+        } else {
+            median = Double(merged[mid])
+        }
+        
+        return median
+    }
+    
 }

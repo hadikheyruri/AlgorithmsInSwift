@@ -136,4 +136,15 @@ class AlgorithmsInSwift_ArrayTests: XCTestCase {
         XCTAssertEqual(dsa.smallestSubarrayContainingAllElements([0,0,0,0,0,0,0,0,0,0,1,0,3]), [1, 0, 3])
     }
 
+    func testFindMedianSortedArrays() throws {
+        
+        let dsa = DSA_Array()
+        XCTAssertEqual(dsa.findMedianSortedArrays([1, 2], [3, 4]), 2.5)
+        XCTAssertEqual(dsa.findMedianSortedArrays([], [3, 4, 5]), 4)
+        XCTAssertEqual(dsa.findMedianSortedArrays([1, 2, 6], []), 2)
+        XCTAssertEqual(dsa.findMedianSortedArrays([], []), 0)
+        XCTAssertEqual(dsa.findMedianSortedArrays([1, 2, 3], [1, 2]), 2)
+
+
+    }
 }
