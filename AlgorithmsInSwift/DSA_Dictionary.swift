@@ -95,11 +95,7 @@ class DSA_Dictionary {
         
         for char in str { hashString[char] = 0 }
         for char in match {
-            if let count = hashMatch[char] {
-                hashMatch[char] = count + 1
-            } else {
-                hashMatch[char] = 1
-            }
+            hashMatch[char] = (hashMatch[char] ?? 0) + 1
         }
         
         var start: Int = 0
